@@ -175,8 +175,8 @@ const S={
  indicacoes:{r:'Indicações (por código)',f:nf.format,d:[32,72,21],h:[1,2,2,3,3,6,3,1]},
  cpi:{r:'Custo por inscrito',f:R,d:[2.52,6.37,16.30],h:[27.5,22.1,20,19.1,16.5,11,12.3,33.3]},
  impressoes:{r:'Impressões',f:nf.format,d:[38420,151200,97300],h:[6200,8900,11000,12400,15300,21800,13100,8600]},
- alcance:{r:'Alcance',f:nf.format,d:[21300,64800,38900],h:[2100,2900,3400,3700,4300,6100,3800,2600]},
- frequencia:{r:'Frequência',f:D2,d:[1.8,4.1,6.3],h:[4.4,4.6,4.9,5.1,5.4,5.8,6.1,6.3]},
+ alcance:{r:'Alcance (acumulado)',f:nf.format,d:[21300,64800,94200],h:[67000,70100,73600,77400,81800,88100,92000,94200]},
+ frequencia:{r:'Frequência (acumulada)',f:D2,d:[1.8,2.93,3.05],h:[2.94,2.95,2.96,2.97,2.99,3.01,3.03,3.05]},
  cpm:{r:'CPM',f:R,d:[27.07,28.97,30.83],h:[35.5,34.8,34.5,33.9,33.3,29.4,24.4,23.3]},
  cliques:{r:'Cliques',f:nf.format,d:[640,2210,1380],h:[110,150,180,190,230,310,150,60]},
  ctr:{r:'CTR',f:P,d:[1.67,1.46,1.42],h:[1.8,1.7,1.6,1.5,1.5,1.4,1.1,0.7]},
@@ -265,9 +265,9 @@ function linhas(series,rot,opts={}){ // series:[{nome,cor,v[],f}] cada uma na pr
   let g='';for(let j=0;j<=4;j++){const y=T+ih*j/4;g+=`<line x1="${L}" x2="${W-Rr}" y1="${y}" y2="${y}" stroke="var(--grid)"/>`}
   rot.forEach((r,i)=>g+=`<text x="${x(i)}" y="${H-8}" text-anchor="middle">${r}</text>`);
   const um=series.length===1;
-  if(um){const mx=Math.max(...series[0].v,opts.meta||0)*1.1||1;for(let j=0;j<=4;j++){const val=mx*(1-j/4);g+=`<text x="${L-6}" y="${T+ih*j/4+4}" text-anchor="end">${abrev(val)}</text>`}
+  if(um){let mx=Math.max(...series[0].v,opts.meta||0)*1.1||1;if(series[0].v.every(Number.isInteger))mx=Math.ceil(mx/4)*4;for(let j=0;j<=4;j++){const val=mx*(1-j/4);g+=`<text x="${L-6}" y="${T+ih*j/4+4}" text-anchor="end">${abrev(val)}</text>`}
     if(opts.meta){const y=T+ih*(1-opts.meta/mx);g+=`<line x1="${L}" x2="${W-Rr}" y1="${y}" y2="${y}" stroke="var(--fg-3)" stroke-dasharray="4 4"/><text x="${W-Rr}" y="${y-5}" text-anchor="end">meta ${series[0].f(opts.meta)}</text>`}}
-  series.forEach(s=>{const mx=um?Math.max(...s.v,opts.meta||0)*1.1||1:Math.max(...s.v)*1.1||1;
+  series.forEach(s=>{let mx=um?Math.max(...s.v,opts.meta||0)*1.1||1:Math.max(...s.v)*1.1||1;if(um&&s.v.every(Number.isInteger))mx=Math.ceil(mx/4)*4;
     const pts=s.v.map((v,i)=>[x(i),T+ih*(1-v/mx)]);
     g+=`<polyline fill="none" stroke="${s.cor}" stroke-width="2" stroke-linejoin="round" points="${pts.map(p=>p.join(',')).join(' ')}"/>`;
     pts.forEach(p=>g+=`<circle cx="${p[0]}" cy="${p[1]}" r="3" fill="${s.cor}"/>`)});
@@ -292,7 +292,7 @@ function colunas(itens,opts={}){
     g+=`<text x="${x+bw*.3}" y="${T+ih-h-5}" text-anchor="middle" style="fill:var(--fg-2)">${it.lbl||nf.format(it.v)}</text><text x="${x+bw*.3}" y="${H-8}" text-anchor="middle">${esc(it.r)}</text>`});
   return `<svg class="ch col" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(opts.aria||'')}">${g}</svg>`;
 }
-const abrev=v=>v>=1000?nf.format(Math.round(v/100)/10)+' mil':v>=10?nf.format(Math.round(v)):D2(v);
+const abrev=v=>v>=1000?nf.format(Math.round(v/100)/10)+' mil':(v>=10||Number.isInteger(v))?nf.format(Math.round(v)):D2(v);
 const TIPS={};
 function ligar(root){
   root.querySelectorAll('svg[data-tip]').forEach(svg=>{const d=TIPS[svg.dataset.tip];const tip=$('#tip');
@@ -411,7 +411,7 @@ function modalMetrica(k){
     <div class="mlinha" style="margin-top:12px"><div class="seg" role="group" aria-label="Período"><button data-mo="dia" aria-pressed="${modo==='dia'}">Por dia</button><button data-mo="hora" aria-pressed="${modo==='hora'}">Por hora (09/11)</button></div><span class="sec8">Comparar até 4 métricas</span></div>
     <div class="chips">${disp.map(m=>{const on=sel.includes(m);const cor=on?CORES[sel.indexOf(m)]:'var(--fg-4)';const off=!on&&sel.length>=4;return `<button class="chip" data-c="${m}" aria-pressed="${on}" ${off?'aria-disabled="true"':''}><i style="background:${cor}"></i>${esc(S[m].r)}</button>`}).join('')}</div>
     ${linhas(series,rot,{meta})}
-    <div class="lista">${series.map(s=>`<div><span>${esc(s.nome)}</span><b class="tab">${!['cpi','frequencia','cpm','ctr','cpc'].includes(sel[series.indexOf(s)])?s.f(s.v.reduce((a,b)=>a+b,0)):s.f(s.v[s.v.length-1])}</b></div>`).join('')}</div>
+    <div class="lista">${series.map(s=>`<div><span>${esc(s.nome)}</span><b class="tab">${!['cpi','frequencia','alcance','cpm','ctr','cpc'].includes(sel[series.indexOf(s)])?s.f(s.v.reduce((a,b)=>a+b,0)):s.f(s.v[s.v.length-1])}</b></div>`).join('')}</div>
     ${(RECORTE[aba]||(()=>''))()}`};
   const {m}=abrirModal(html());
   const re=()=>{const f=document.activeElement&&document.activeElement.dataset;m.innerHTML=html();m.querySelector('.fechar').onclick=()=>m.parentElement.click();ligarM();ligar(m);
