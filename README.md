@@ -11,5 +11,6 @@ antes de o bloco entrar no sistema (repo `sistema-grupo-participa-v2`, via `Extr
   envios e custo dos disparos).
 - Publicação: GitHub Pages pelo workflow `.github/workflows/pages.yml` a cada push na `main`. `noindex` na página e
   `robots.txt` bloqueando tudo.
-- Situação (07/11/2026): publicada, aguardando o ok do Victor. Nada no sistema foi alterado.
+- Situação (07/11/2026): publicada em https://victorhugo-alves.github.io/previa-bf26-live-final/ e testada no Chrome (desktop e janela estreita, sem erro no console). Aguarda o ok do Victor. Nada no sistema foi alterado.
+- Ajustes depois do teste: gráficos de colunas e barras com largura máxima (texto não estoura no painel inteiro), rótulo de verba sem corte, alcance e frequência acumulados no modal (batem com o card), eixo inteiro em contagem.
 - Plano completo: `2° cérebro/Projetos/marketing-bf26/live-encerramento/2026-11-07-plano-card-live-final.md`.
