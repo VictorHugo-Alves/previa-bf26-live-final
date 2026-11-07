@@ -94,6 +94,7 @@ dl.sec dt{color:var(--fg-3)}dl.sec dd{margin:0;text-align:right;color:var(--fg-2
 @container (min-width:52rem){.duas{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .duas .painel{margin-top:0}
 svg.ch{width:100%;height:auto;display:block}
+svg.ch.col{max-width:640px;margin:0 auto}
 svg.ch text{fill:var(--fg-3);font-size:11px;font-family:Inter,sans-serif}
 .tw{overflow-x:auto;margin-top:16px;border:1px solid var(--border);border-radius:var(--r-md)}
 table{width:100%;border-collapse:collapse;font-size:12px;min-width:520px}
@@ -275,7 +276,7 @@ function linhas(series,rot,opts={}){ // series:[{nome,cor,v[],f}] cada uma na pr
   return `<svg class="ch" data-tip="${id}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(series.map(s=>s.nome).join(', '))} por ${rot.length>3?'hora':'dia'}">${g}</svg>`;
 }
 function barras(itens,opts={}){ // itens:[{r,v,ref?}]
-  const W=640,rowH=26,L=opts.L||150,Rr=60,H=itens.length*rowH+8,iw=W-L-Rr;
+  const W=640,rowH=26,L=opts.L||150,Rr=opts.Rr||(opts.f?150:60),H=itens.length*rowH+8,iw=W-L-Rr;
   const mx=Math.max(...itens.map(i=>Math.max(i.v,i.ref||0)))||1;let g='';
   itens.forEach((it,k)=>{const y=4+k*rowH;
     if(it.ref)g+=`<rect x="${L}" y="${y+4}" width="${iw*it.ref/mx}" height="14" rx="3" fill="var(--surface-4)"/>`;
@@ -289,7 +290,7 @@ function colunas(itens,opts={}){
   itens.forEach((it,i)=>{const h=ih*it.v/mx,x=L+i*bw+bw*.2;
     g+=`<rect x="${x}" y="${T+ih-h}" width="${bw*.6}" height="${h}" rx="3" fill="${it.cor||'var(--s1)'}"/>`;
     g+=`<text x="${x+bw*.3}" y="${T+ih-h-5}" text-anchor="middle" style="fill:var(--fg-2)">${it.lbl||nf.format(it.v)}</text><text x="${x+bw*.3}" y="${H-8}" text-anchor="middle">${esc(it.r)}</text>`});
-  return `<svg class="ch" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(opts.aria||'')}">${g}</svg>`;
+  return `<svg class="ch col" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(opts.aria||'')}">${g}</svg>`;
 }
 const abrev=v=>v>=1000?nf.format(Math.round(v/100)/10)+' mil':v>=10?nf.format(Math.round(v)):D2(v);
 const TIPS={};
