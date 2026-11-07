@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Prévia BF26 Live Final</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --accent:#F29725;--green:#16a34a;--green-border:rgba(22,163,74,.22);--yellow:#d97706;--yellow-border:rgba(217,119,6,.22);
+  --red:#dc2626;--red-border:rgba(220,38,38,.22);
+  --surface-0:#000;--surface-1:#0d0d0d;--surface-2:#141414;--surface-3:#1c1c1c;--surface-4:#242424;
+  --border:rgba(255,255,255,.08);--border-strong:rgba(255,255,255,.14);--border-accent:rgba(242,151,37,.28);
+  --fg:#f0f0f0;--fg-2:#a6a6a6;--fg-3:#767676;--fg-4:#3a3a3a;
+  --r-sm:6px;--r-md:10px;--r-lg:14px;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.3),0 1px 3px rgba(0,0,0,.15);--hl:inset 0 1px 0 rgba(255,255,255,.04);
+  --s1:#F29725;--s2:#3b82f6;--s3:#a855f7;--s4:#14b8a6;--grid:rgba(255,255,255,.06);
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --accent:#E07F10;--green:#15803d;--green-border:rgba(21,128,61,.32);--yellow:#b45309;--yellow-border:rgba(180,83,9,.32);
+  --red:#b91c1c;--red-border:rgba(185,28,28,.32);
+  --surface-0:#eef1f6;--surface-1:#eef1f6;--surface-2:#fff;--surface-3:#eef1f6;--surface-4:#dde3ec;
+  --border:rgba(15,23,42,.12);--border-strong:rgba(15,23,42,.22);--border-accent:rgba(224,127,16,.42);
+  --fg:#0f172a;--fg-2:#475569;--fg-3:#64748b;--fg-4:#94a3b8;--shadow-sm:0 1px 2px rgba(15,23,42,.05),0 1px 3px rgba(15,23,42,.04);
+  --hl:inset 0 1px 0 rgba(255,255,255,.6);--s1:#E07F10;--s2:#2563eb;--s3:#9333ea;--s4:#0d9488;--grid:rgba(15,23,42,.08);
+}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--surface-1);color:var(--fg);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+body{overflow-x:hidden}
+.tab{font-variant-numeric:tabular-nums}
+.wrap{max-width:1280px;margin:0 auto;padding:16px}
+.faixa{border:1px dashed var(--border-accent);background:rgba(242,151,37,.08);color:var(--fg-2);border-radius:var(--r-md);padding:8px 12px;font-size:12px;margin-bottom:14px;line-height:1.45}
+.faixa b{color:var(--accent)}
+.cab{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-bottom:6px}
+.cab h1{font-size:20px;margin:0;letter-spacing:-.02em}
+.cab .sub{font-size:12px;color:var(--fg-3)}
+.abasProj{display:flex;gap:4px;border-bottom:1px solid var(--border);margin:10px 0 14px;overflow-x:auto}
+.abasProj span{padding:8px 12px;font-size:13px;color:var(--fg-3);white-space:nowrap}
+.abasProj span.on{color:var(--fg);border-bottom:2px solid var(--accent);font-weight:600}
+.linha{font-size:12px;color:var(--fg-3);margin:0 0 8px}
+.cq{container-type:inline-size}
+.grade{display:grid;gap:16px;grid-template-columns:1fr}
+@container (min-width:36rem){.grade{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@container (min-width:60rem){.grade{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.bloco{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;min-width:0;height:100%;border:1px solid var(--border);border-top-width:3px;border-radius:var(--r-lg);background:var(--surface-2);padding:14px;box-shadow:var(--hl),var(--shadow-sm);transition:background .15s,border-color .15s,translate .15s}
+.bloco:hover{translate:0 -2px;background:var(--surface-3);border-color:var(--border-strong)}
+.bloco:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.bloco.aberto{border-color:var(--accent);background:var(--surface-3)}
+.bloco.novo{box-shadow:0 0 0 1px var(--border-accent),var(--shadow-sm)}
+.bTop{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.bTit{display:inline-flex;gap:8px;font-size:14px;font-weight:600;line-height:1.35;min-width:0}
+.bTit svg{flex-shrink:0;margin-top:2px;color:var(--fg-3)}
+.bloco:hover .bTit svg,.bloco.aberto .bTit svg{color:var(--accent)}
+.est{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);border-radius:var(--r-sm);padding:2px 8px;font-size:11px;font-weight:500;color:var(--fg-2);white-space:nowrap}
+.est i{width:6px;height:6px;border-radius:50%;display:inline-block}
+.num{font-size:24px;font-weight:700;letter-spacing:-.02em;margin-top:8px;line-height:1.2}
+.rot{font-size:12px;color:var(--fg-3);margin-top:2px}
+dl.sec{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 12px;font-size:12px;margin:8px 0 0}
+dl.sec dt{color:var(--fg-3)}dl.sec dd{margin:0;text-align:right;color:var(--fg-2);font-weight:500}
+.bPe{margin-top:auto;padding-top:8px}
+.barra{height:6px;border-radius:99px;background:var(--surface-4);overflow:hidden;margin-bottom:4px}
+.barra i{display:block;height:100%;background:var(--accent);border-radius:99px}
+.barraT{display:flex;justify-content:space-between;font-size:11px;color:var(--fg-3);margin-bottom:8px}
+.pe{display:flex;justify-content:space-between;align-items:flex-end;gap:8px;border-top:1px solid var(--border);padding-top:8px;font-size:12px;color:var(--fg-2)}
+.pe small{display:block;font-size:11px;color:var(--fg-3);margin-top:4px}
+.chev{transition:transform .15s;color:var(--fg-3)}.aberto .chev{transform:rotate(180deg);color:var(--accent)}
+.novoTag{font-size:10px;font-weight:700;color:var(--accent);letter-spacing:.04em;text-transform:uppercase;margin-left:6px}
+.detalhe{margin-top:16px;border:1px solid var(--accent);border-radius:var(--r-lg);background:var(--surface-2);padding:20px;box-shadow:var(--hl),var(--shadow-sm);animation:sobe .25s ease-out;scroll-margin-top:16px;min-width:0}
+@keyframes sobe{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.detalhe,.modal{animation:none}.bloco{transition:none}}
+.dCab{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.dCab h2{display:inline-flex;align-items:center;gap:8px;font-size:16px;margin:0}
+.dCab h2 svg{color:var(--accent)}
+.fechar{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--fg-3);padding:4px 8px;border-radius:var(--r-sm)}
+.fechar:hover{background:var(--surface-3);color:var(--fg)}.fechar:focus-visible{outline:2px solid var(--accent)}
+.abas{display:flex;gap:4px;border-bottom:1px solid var(--border);margin:16px 0;overflow-x:auto;scrollbar-width:none}
+.abas button{all:unset;cursor:pointer;padding:8px 12px;font-size:13px;color:var(--fg-3);white-space:nowrap;border-bottom:2px solid transparent}
+.abas button[aria-selected="true"]{color:var(--fg);border-color:var(--accent);font-weight:600}
+.abas button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.cq2{container-type:inline-size;min-width:0}
+.cards{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
+@container (min-width:40rem){.cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@container (min-width:62rem){.cards{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.card{all:unset;box-sizing:border-box;cursor:pointer;border:1px solid var(--border);border-radius:var(--r-md);background:var(--surface-3);padding:12px;min-width:0;display:flex;flex-direction:column;gap:2px}
+.card:hover{border-color:var(--border-strong)}.card:focus-visible{outline:2px solid var(--accent)}
+.card .cr{font-size:12px;color:var(--fg-3)}.card .cv{font-size:19px;font-weight:700;letter-spacing:-.01em}
+.card .cx{font-size:11px;color:var(--fg-3);line-height:1.35}
+.card.sf{cursor:default;border-style:dashed;background:transparent}.card.sf .cv{font-size:13px;color:var(--fg-3);font-weight:600}
+.painel{margin-top:16px;border:1px solid var(--border);border-radius:var(--r-md);padding:14px;min-width:0}
+.painel h3{font-size:13px;margin:0 0 2px}.painel p.leg{font-size:11px;color:var(--fg-3);margin:0 0 10px}
+.duas{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}
+@container (min-width:52rem){.duas{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.duas .painel{margin-top:0}
+svg.ch{width:100%;height:auto;display:block}
+svg.ch text{fill:var(--fg-3);font-size:11px;font-family:Inter,sans-serif}
+.tw{overflow-x:auto;margin-top:16px;border:1px solid var(--border);border-radius:var(--r-md)}
+table{width:100%;border-collapse:collapse;font-size:12px;min-width:520px}
+th{text-align:left;font-weight:600;color:var(--fg-3);padding:8px 10px;border-bottom:1px solid var(--border);white-space:nowrap;background:var(--surface-2)}
+td{padding:8px 10px;border-bottom:1px solid var(--border);color:var(--fg-2);white-space:nowrap}
+td.n,th.n{text-align:right}
+tr.cl{cursor:pointer}tr.cl:hover td{background:var(--surface-3);color:var(--fg)}tr.cl:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.tit{font-size:13px;font-weight:600;margin:16px 0 0;display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap}
+.tit small{font-weight:400;color:var(--fg-3);font-size:11px}
+.af{display:inline-block;font-size:11px;color:var(--fg-3);border:1px dashed var(--border-strong);border-radius:var(--r-sm);padding:1px 6px}
+.vazio{font-size:13px;color:var(--fg-2);padding:6px 0}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:flex-start;justify-content:center;padding:24px 16px;z-index:50;overflow-y:auto}
+.modal{width:100%;max-width:860px;background:var(--surface-2);border:1px solid var(--border-strong);border-radius:var(--r-lg);padding:20px;animation:sobe .2s ease-out;min-width:0}
+.modal h2{font-size:16px;margin:0}.modal .ms{font-size:12px;color:var(--fg-3);margin-top:2px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 10px}
+.chip{all:unset;cursor:pointer;font-size:12px;padding:4px 10px;border:1px solid var(--border-strong);border-radius:99px;color:var(--fg-2);display:inline-flex;align-items:center;gap:6px}
+.chip i{width:8px;height:8px;border-radius:50%;background:var(--fg-4)}
+.chip[aria-pressed="true"]{color:var(--fg);border-color:var(--fg-3)}
+.chip[aria-disabled="true"]{opacity:.4;cursor:not-allowed}
+.chip:focus-visible{outline:2px solid var(--accent)}
+.seg{display:inline-flex;border:1px solid var(--border-strong);border-radius:var(--r-sm);overflow:hidden}
+.seg button{all:unset;cursor:pointer;font-size:12px;padding:4px 10px;color:var(--fg-3)}
+.seg button[aria-pressed="true"]{background:var(--surface-4);color:var(--fg)}
+.mlinha{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.tip{position:fixed;pointer-events:none;background:var(--surface-4);border:1px solid var(--border-strong);border-radius:var(--r-sm);padding:6px 8px;font-size:11px;color:var(--fg);z-index:60;display:none;white-space:nowrap}
+.tip div{display:flex;gap:6px;align-items:center}.tip i{width:7px;height:7px;border-radius:50%}
+.lista{display:grid;gap:8px;grid-template-columns:repeat(2,minmax(0,1fr));font-size:12px;margin-top:12px}
+@media (min-width:640px){.lista{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.lista div{border:1px solid var(--border);border-radius:var(--r-sm);padding:8px}.lista span{display:block;color:var(--fg-3);font-size:11px}
+.sec8{font-size:12px;color:var(--fg-3)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="faixa"><b>Prévia com dados fictícios.</b> Nenhum número, nome, código ou telefone desta página é real. Serve só para aprovar a estrutura do bloco 9 antes de ele entrar no sistema. Os 8 blocos de cima são os que já existem e não mudam.</div>
+  <div class="cab"><h1>Black Friday 2026</h1><span class="sub">grupoparticipa.app.br/marketing/projetos/bf26</span></div>
+  <div class="abasProj"><span class="on">Dashboard</span><span>Concepção</span><span>Tarefas</span><span>Diário</span><span>Relatório</span></div>
+  <div class="cq">
+    <p class="linha">Atualizado em <span class="tab">07/11 20:30</span> · clique num bloco para ver o detalhe</p>
+    <div class="grade" id="grade"></div>
+    <div id="det" role="region" aria-label="Detalhe do bloco"></div>
+  </div>
+</div>
+<div class="tip" id="tip"></div>
+<script>
+(function(){
+const $=s=>document.querySelector(s);
+const nf=new Intl.NumberFormat('pt-BR');
+const R=v=>'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const R0=v=>'R$ '+nf.format(Math.round(v));
+const P=v=>v.toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1})+'%';
+const D2=v=>v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const IC={
+ wallet:'<path d="M3 7h15a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3z"/><path d="M3 7V6a2 2 0 0 1 2-2h11"/><circle cx="16.5" cy="13.5" r="1"/>',
+ cal:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+ mega:'<path d="M3 11v2a1 1 0 0 0 1 1h3l5 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M16 9a3 3 0 0 1 0 6"/>',
+ globe:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
+ users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 20a6 6 0 0 0-3-5.2"/>',
+ flame:'<path d="M12 3s5 4.5 5 10a5 5 0 0 1-10 0c0-2.5 1.5-4 1.5-4S9 12 11 12c0-4 1-9 1-9z"/>',
+ video:'<rect x="3" y="6" width="13" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3z"/>',
+ dollar:'<path d="M12 3v18M16.5 7.5c0-1.7-2-3-4.5-3s-4.5 1.3-4.5 3 2 2.6 4.5 3 4.5 1.3 4.5 3-2 3-4.5 3-4.5-1.3-4.5-3"/>',
+ radio:'<circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4M7.8 16.2a6 6 0 0 1 0-8.4M19 5a10 10 0 0 1 0 14M5 19A10 10 0 0 1 5 5"/>',
+ x:'<path d="M6 6l12 12M18 6 6 18"/>',chev:'<path d="m6 9 6 6 6-6"/>'};
+const ic=(n,s=16)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[n]}</svg>`;
+const EST={no_rumo:['No rumo','var(--green)','var(--green-border)'],atencao:['Alerta','var(--yellow)','var(--yellow-border)'],critico:['Crítico','var(--red)','var(--red-border)'],info:['Informativo','var(--fg-3)','var(--border)']};
+
+/* ---------- dados fictícios ---------- */
+const DIAS=['07/11','08/11','09/11'];
+const HORAS=['08h','10h','12h','14h','16h','18h','19h','20h'];
+// série por métrica: dia (3 pontos; 09/11 é parcial) e hora (dia 09/11)
+const S={
+ gasto:{r:'Gasto total',f:R0,d:[1040,4380,3000],h:[220,310,380,420,510,640,320,200]},
+ gastoMeta:{r:'Gasto Meta',f:R0,d:[720,3060,2120],h:[150,220,270,300,360,450,220,150]},
+ gastoGoogle:{r:'Gasto Google',f:R0,d:[320,1320,880],h:[70,90,110,120,150,190,100,50]},
+ inscritos:{r:'Inscritos na live',f:nf.format,d:[412,688,184],h:[8,14,19,22,31,58,26,6]},
+ participantes:{r:'Participantes do programa',f:nf.format,d:[96,148,41],h:[2,4,5,6,7,11,4,2]},
+ indicacoes:{r:'Indicações (por código)',f:nf.format,d:[32,72,21],h:[1,2,2,3,3,6,3,1]},
+ cpi:{r:'Custo por inscrito',f:R,d:[2.52,6.37,16.30],h:[27.5,22.1,20,19.1,16.5,11,12.3,33.3]},
+ impressoes:{r:'Impressões',f:nf.format,d:[38420,151200,97300],h:[6200,8900,11000,12400,15300,21800,13100,8600]},
+ alcance:{r:'Alcance',f:nf.format,d:[21300,64800,38900],h:[2100,2900,3400,3700,4300,6100,3800,2600]},
+ frequencia:{r:'Frequência',f:D2,d:[1.8,4.1,6.3],h:[4.4,4.6,4.9,5.1,5.4,5.8,6.1,6.3]},
+ cpm:{r:'CPM',f:R,d:[27.07,28.97,30.83],h:[35.5,34.8,34.5,33.9,33.3,29.4,24.4,23.3]},
+ cliques:{r:'Cliques',f:nf.format,d:[640,2210,1380],h:[110,150,180,190,230,310,150,60]},
+ ctr:{r:'CTR',f:P,d:[1.67,1.46,1.42],h:[1.8,1.7,1.6,1.5,1.5,1.4,1.1,0.7]},
+ cpc:{r:'CPC',f:R,d:[1.63,1.98,2.17],h:[2,2.07,2.11,2.21,2.22,2.06,2.13,3.33]},
+ views:{r:'Visualizações (G1 YouTube)',f:nf.format,d:[2900,11800,7400],h:[600,800,950,1000,1200,1500,900,450]},
+ insDisparo:{r:'Inscrições vindas de disparo',f:nf.format,d:[166,281,72],h:[3,6,8,9,12,22,10,2]},
+};
+const VERBA=36700, VERBA_TRAF=20700, VMETA=14490, VGOOGLE=6210, VDISP=16000;
+const PREVISTO=[1178,4611,9771]; // plano do Caio (sáb, dom, seg)
+const tot=k=>S[k].d.reduce((a,b)=>a+b,0);
+const gastoTot=tot('gasto');
+const CAMP=[ // nomes das 04 a 07 e do Google ainda não existem: rótulo genérico
+ {n:'01 TEASER',p:'Meta',g:2140,v:2600,i:62300,a:21800,c:820},{n:'02 SHOWCASE',p:'Meta',g:1880,v:2600,i:51900,a:19400,c:910},
+ {n:'03 FALTAM 2 DIAS',p:'Meta',g:1210,v:2300,i:39800,a:17100,c:640},{n:'Meta 04 (nome a criar)',p:'Meta',g:330,v:2100,i:9100,a:6800,c:210},
+ {n:'Meta 05 (nome a criar)',p:'Meta',g:200,v:1900,i:6200,a:5100,c:170},{n:'Meta 06 (nome a criar)',p:'Meta',g:140,v:1800,i:3900,a:3300,c:190},
+ {n:'Meta 07 (nome a criar)',p:'Meta',g:0,v:1190,i:0,a:0,c:0},{n:'G1 (YouTube)',p:'Google',g:1620,v:3700,i:66100,a:41200,c:520},
+ {n:'G2',p:'Google',g:900,v:2510,i:47620,a:30100,c:570}];
+const PECAS=[{c:'WhatsApp API',p:'audio-l2',n:183},{c:'WhatsApp API',p:'texto-faltam-2',n:121},{c:'Grupos SendFlow',p:'aviso-grupo-1',n:96},
+ {c:'Grupos SendFlow',p:'fluxograma',n:58},{c:'E-mail',p:'email-convite',n:39},{c:'WhatsApp API',p:'leads-det',n:22}];
+const NOMES=['Ana Ribeiro','Bruno Tavares','Carla Mendes','Diego Prado','Elisa Moura','Fábio Lins','Gabriela Sá','Heitor Nunes','Íris Campos','João Vieira','Karina Pires','Lucas Barros','Marina Teles','Nuno Freitas','Olga Rocha','Paulo Dias','Queila Matos','Rafael Gomes','Sofia Leal','Tiago Moraes','Úrsula Neri','Vítor Ramos','Wanda Costa','Yuri Pacheco'];
+const PROF=['Advogado(a)','Contador(a)','Outros'];
+const ORIG=['link do programa','grupo','WhatsApp API','e-mail'];
+let seed=7;const rnd=()=>{seed=(seed*16807)%2147483647;return seed/2147483647};
+const COD=[];const ch='ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+const qt=[14,11,9,8,7,6,6,5,5,4,4,4,3,3,3,3,2,2,2,2,2,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1];
+qt.forEach((q,i)=>{let c='';for(let j=0;j<7;j++)c+=ch[Math.floor(rnd()*ch.length)];
+  const ind=[];for(let k=0;k<q;k++){const nm=NOMES[Math.floor(rnd()*NOMES.length)];const d=rnd()<.35?'07/11':(rnd()<.8?'08/11':'09/11');
+   ind.push({nm,tel:'(11) 9••••-'+String(1000+Math.floor(rnd()*8999)),prof:PROF[Math.floor(rnd()*3)],orig:ORIG[Math.floor(rnd()*4)],d,h:String(8+Math.floor(rnd()*12)).padStart(2,'0')+':'+String(Math.floor(rnd()*60)).padStart(2,'0')})}
+  ind.sort((a,b)=>(a.d+a.h)<(b.d+b.h)?1:-1);COD.push({c,q,ind,ult:ind[0].d+' '+ind[0].h})});
+const PART=tot('participantes'), IND=COD.reduce((a,b)=>a+b.q,0);
+const SEM=PART-COD.length;
+const DIST=[{r:'0',n:SEM},{r:'1',n:qt.filter(q=>q===1).length},{r:'2 a 5',n:qt.filter(q=>q>=2&&q<=5).length},{r:'6 ou mais',n:qt.filter(q=>q>=6).length}];
+
+/* ---------- grade: 8 blocos existentes + bloco 9 ---------- */
+const B8=[['investimento','Investimento','wallet'],['dias','Dias até o evento','cal'],['anuncios','Anúncios','mega'],['paginas','Páginas','globe'],
+ ['leads','Leads','users'],['aquecimento','Aquecimento','flame'],['cpls','CPLs','video'],['vendas','Vendas','dollar']];
+let aberto=null;
+function blocoExistente([k,t,i],idx){
+  return `<button class="bloco" data-b="${k}" aria-expanded="${aberto===k}" aria-controls="det" style="border-top-color:var(--fg-4)">
+  <div class="bTop"><span class="bTit">${ic(i)}<span>${t}</span></span><span class="est"><i style="background:var(--fg-3)"></i>Bloco atual</span></div>
+  <div class="num" style="color:var(--fg-4)">· · ·</div><div class="rot">Já existe no sistema, não muda</div>
+  <div class="bPe"><div class="pe"><span class="sec8">Fora do escopo desta prévia</span><span class="chev">${ic('chev',14)}</span></div></div></button>`;
+}
+function bloco9(){
+  const e=EST.no_rumo;const pct=Math.min(100,gastoTot/VERBA*100);
+  return `<button class="bloco novo ${aberto==='live-final'?'aberto':''}" data-b="live-final" aria-expanded="${aberto==='live-final'}" aria-controls="det" style="border-top-color:${e[1]}">
+  <div class="bTop"><span class="bTit">${ic('radio')}<span>Live final 09/11<span class="novoTag">novo</span></span></span><span class="est" style="border-color:${e[2]}"><i style="background:${e[1]}"></i>${e[0]}</span></div>
+  <div class="num tab">${nf.format(tot('inscritos'))}</div><div class="rot">Inscritos na live</div>
+  <dl class="sec"><dt>Participantes do programa</dt><dd class="tab">${nf.format(PART)}</dd><dt>Indicações (por código)</dt><dd class="tab">${nf.format(IND)}</dd><dt>Custo por inscrito</dt><dd class="tab">${R(gastoTot/tot('inscritos'))}</dd></dl>
+  <div class="bPe"><div class="barra"><i style="width:${pct}%"></i></div><div class="barraT tab"><span>Gasto ${R0(gastoTot)}</span><span>de ${R0(VERBA)}</span></div>
+  <div class="pe"><div>Gasto dentro do previsto até hoje<small>Dado até 07/11</small></div><span class="chev">${ic('chev',14)}</span></div></div></button>`;
+}
+function grade(){
+  $('#grade').innerHTML=B8.map(blocoExistente).join('')+bloco9();
+  document.querySelectorAll('.bloco').forEach(b=>{b.classList.toggle('aberto',aberto===b.dataset.b);b.onclick=()=>alternar(b.dataset.b)});
+}
+function alternar(k){aberto=aberto===k?null:k;grade();detalhe(true);
+  const u=new URL(location.href);if(aberto)u.searchParams.set('bloco',aberto);else u.searchParams.delete('bloco');u.searchParams.delete('aba');history.replaceState(null,'',u)}
+
+/* ---------- detalhe ---------- */
+const ABAS=[['visao','Visão geral'],['trafego','Tráfego'],['disparos','Disparos'],['indicacao','Indicação']];
+let aba='visao';
+function detalhe(rolar){
+  const el=$('#det');
+  if(!aberto){el.innerHTML='';return}
+  if(aberto!=='live-final'){const b=B8.find(x=>x[0]===aberto);
+    el.innerHTML=`<section class="detalhe"><div class="dCab"><h2>${ic(b[2],18)}${b[1]}</h2><button class="fechar" id="fx">${ic('x',12)} Fechar</button></div><p class="vazio" style="margin-top:12px">Este é um dos 8 blocos que já existem. A prévia não mexe nele; o detalhe real fica igual ao de hoje.</p></section>`;
+  } else {
+    el.innerHTML=`<section class="detalhe"><div class="dCab"><h2>${ic('radio',18)}Live final 09/11</h2><button class="fechar" id="fx">${ic('x',12)} Fechar</button></div>
+    <div class="abas" role="tablist">${ABAS.map(([k,t])=>`<button role="tab" id="t-${k}" aria-selected="${aba===k}" aria-controls="p-aba" tabindex="${aba===k?0:-1}" data-a="${k}">${t}</button>`).join('')}</div>
+    <div id="p-aba" role="tabpanel" aria-labelledby="t-${aba}" class="cq2">${CONT[aba]()}</div></section>`;
+    el.querySelectorAll('[role=tab]').forEach(t=>{t.onclick=()=>{aba=t.dataset.a;const u=new URL(location.href);u.searchParams.set('aba',aba);history.replaceState(null,'',u);detalhe(false);$('#t-'+aba).focus()};
+      t.onkeydown=e=>{const i=ABAS.findIndex(a=>a[0]===aba);let n=null;if(e.key==='ArrowRight')n=(i+1)%4;if(e.key==='ArrowLeft')n=(i+3)%4;if(n!==null){e.preventDefault();aba=ABAS[n][0];detalhe(false);$('#t-'+aba).focus()}}});
+    ligar(el);
+  }
+  $('#fx').onclick=()=>alternar(aberto);
+  if(rolar){const r=matchMedia('(prefers-reduced-motion: reduce)').matches;el.firstElementChild.scrollIntoView({behavior:r?'auto':'smooth',block:'nearest'})}
+}
+const card=(k,v,x)=>`<button class="card" data-m="${k}"><span class="cr">${S[k]?S[k].r:k}</span><span class="cv tab">${v}</span>${x?`<span class="cx">${x}</span>`:''}</button>`;
+const cardSF=(r,fonte)=>`<div class="card sf"><span class="cr">${r}</span><span class="cv">Aguardando fonte</span><span class="cx">${fonte}</span></div>`;
+
+/* gráficos */
+function linhas(series,rot,opts={}){ // series:[{nome,cor,v[],f}] cada uma na própria escala
+  const W=640,H=220,L=36,Rr=12,T=14,Bt=26,iw=W-L-Rr,ih=H-T-Bt,n=rot.length;
+  const x=i=>L+(n===1?iw/2:i*iw/(n-1));
+  let g='';for(let j=0;j<=4;j++){const y=T+ih*j/4;g+=`<line x1="${L}" x2="${W-Rr}" y1="${y}" y2="${y}" stroke="var(--grid)"/>`}
+  rot.forEach((r,i)=>g+=`<text x="${x(i)}" y="${H-8}" text-anchor="middle">${r}</text>`);
+  const um=series.length===1;
+  if(um){const mx=Math.max(...series[0].v,opts.meta||0)*1.1||1;for(let j=0;j<=4;j++){const val=mx*(1-j/4);g+=`<text x="${L-6}" y="${T+ih*j/4+4}" text-anchor="end">${abrev(val)}</text>`}
+    if(opts.meta){const y=T+ih*(1-opts.meta/mx);g+=`<line x1="${L}" x2="${W-Rr}" y1="${y}" y2="${y}" stroke="var(--fg-3)" stroke-dasharray="4 4"/><text x="${W-Rr}" y="${y-5}" text-anchor="end">meta ${series[0].f(opts.meta)}</text>`}}
+  series.forEach(s=>{const mx=um?Math.max(...s.v,opts.meta||0)*1.1||1:Math.max(...s.v)*1.1||1;
+    const pts=s.v.map((v,i)=>[x(i),T+ih*(1-v/mx)]);
+    g+=`<polyline fill="none" stroke="${s.cor}" stroke-width="2" stroke-linejoin="round" points="${pts.map(p=>p.join(',')).join(' ')}"/>`;
+    pts.forEach(p=>g+=`<circle cx="${p[0]}" cy="${p[1]}" r="3" fill="${s.cor}"/>`)});
+  rot.forEach((r,i)=>{const w=n===1?iw:iw/(n-1);g+=`<rect class="hz" data-i="${i}" x="${x(i)-w/2}" y="${T}" width="${w}" height="${ih}" fill="transparent"/>`});
+  const id='c'+Math.random().toString(36).slice(2,8);TIPS[id]={series,rot};
+  return `<svg class="ch" data-tip="${id}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(series.map(s=>s.nome).join(', '))} por ${rot.length>3?'hora':'dia'}">${g}</svg>`;
+}
+function barras(itens,opts={}){ // itens:[{r,v,ref?}]
+  const W=640,rowH=26,L=opts.L||150,Rr=60,H=itens.length*rowH+8,iw=W-L-Rr;
+  const mx=Math.max(...itens.map(i=>Math.max(i.v,i.ref||0)))||1;let g='';
+  itens.forEach((it,k)=>{const y=4+k*rowH;
+    if(it.ref)g+=`<rect x="${L}" y="${y+4}" width="${iw*it.ref/mx}" height="14" rx="3" fill="var(--surface-4)"/>`;
+    g+=`<rect x="${L}" y="${y+4}" width="${Math.max(1,iw*it.v/mx)}" height="14" rx="3" fill="${opts.cor||'var(--s1)'}"/>`;
+    g+=`<text x="${L-8}" y="${y+15}" text-anchor="end">${esc(it.r)}</text><text x="${L+iw*Math.max(it.v,it.ref||0)/mx+6}" y="${y+15}">${(opts.f||nf.format)(it.v)}${it.ref?' / '+(opts.f||nf.format)(it.ref):''}</text>`});
+  return `<svg class="ch" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(opts.aria||'gráfico de barras')}">${g}</svg>`;
+}
+function colunas(itens,opts={}){
+  const W=640,H=200,L=12,Rr=12,T=18,Bt=26,iw=W-L-Rr,ih=H-T-Bt,n=itens.length,bw=iw/n;
+  const mx=Math.max(...itens.map(i=>i.v))*1.15||1;let g='';
+  itens.forEach((it,i)=>{const h=ih*it.v/mx,x=L+i*bw+bw*.2;
+    g+=`<rect x="${x}" y="${T+ih-h}" width="${bw*.6}" height="${h}" rx="3" fill="${it.cor||'var(--s1)'}"/>`;
+    g+=`<text x="${x+bw*.3}" y="${T+ih-h-5}" text-anchor="middle" style="fill:var(--fg-2)">${it.lbl||nf.format(it.v)}</text><text x="${x+bw*.3}" y="${H-8}" text-anchor="middle">${esc(it.r)}</text>`});
+  return `<svg class="ch" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(opts.aria||'')}">${g}</svg>`;
+}
+const abrev=v=>v>=1000?nf.format(Math.round(v/100)/10)+' mil':v>=10?nf.format(Math.round(v)):D2(v);
+const TIPS={};
+function ligar(root){
+  root.querySelectorAll('svg[data-tip]').forEach(svg=>{const d=TIPS[svg.dataset.tip];const tip=$('#tip');
+    svg.querySelectorAll('.hz').forEach(r=>{const show=e=>{const i=+r.dataset.i;
+      tip.innerHTML=`<b>${d.rot[i]}</b>`+d.series.map(s=>`<div><i style="background:${s.cor}"></i>${esc(s.nome)}: ${s.f(s.v[i])}</div>`).join('');
+      tip.style.display='block';const px=(e.clientX||r.getBoundingClientRect().x)+12,py=(e.clientY||r.getBoundingClientRect().y)+12;
+      tip.style.left=Math.min(px,innerWidth-tip.offsetWidth-8)+'px';tip.style.top=py+'px'};
+      r.addEventListener('mousemove',show);r.addEventListener('touchstart',e=>show(e.touches[0]),{passive:true});r.addEventListener('mouseleave',()=>tip.style.display='none')})});
+  root.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>modalMetrica(b.dataset.m));
+  root.querySelectorAll('tr[data-camp]').forEach(t=>{t.onclick=()=>modalCampanha(+t.dataset.camp);t.onkeydown=e=>{if(e.key==='Enter')t.click()}});
+  root.querySelectorAll('tr[data-cod]').forEach(t=>{t.onclick=()=>modalCodigo(+t.dataset.cod);t.onkeydown=e=>{if(e.key==='Enter')t.click()}});
+  root.querySelectorAll('[data-todos]').forEach(b=>b.onclick=()=>{mostrarTodos=!mostrarTodos;detalhe(false)});
+}
+
+/* conteúdo das abas */
+let mostrarTodos=false;
+const CONT={
+ visao:()=>{
+  const real=S.gasto.d;
+  return `<div class="cards">
+   ${card('gasto',R0(gastoTot),`de ${R0(VERBA)} (${P(gastoTot/VERBA*100)})`)}
+   ${card('inscritos',nf.format(tot('inscritos')),'captura nivelouro.com.br')}
+   ${card('participantes',nf.format(PART),'entraram no programa')}
+   ${card('indicacoes',nf.format(IND),'inscritos com ?ref= de alguém')}
+   ${card('cpi',R(gastoTot/tot('inscritos')),'gasto total ÷ inscritos')}
+   ${cardSF('Indicados válidos','situação do indicado vem do Respondi (Júnior)')}
+   ${cardSF('Custo por indicado válido','depende dos indicados válidos')}
+  </div>
+  <div class="painel"><h3>Gasto previsto x realizado por dia</h3><p class="leg">Previsto: plano do Caio (sáb R$ 1.178, dom R$ 4.611, seg R$ 9.771). Realizado: tráfego do banco, disparos aguardando fonte. 09/11 parcial.</p>
+   ${colunas([{r:'07/11 prev.',v:PREVISTO[0],cor:'var(--surface-4)',lbl:R0(PREVISTO[0])},{r:'07/11 real',v:real[0],lbl:R0(real[0])},{r:'08/11 prev.',v:PREVISTO[1],cor:'var(--surface-4)',lbl:R0(PREVISTO[1])},{r:'08/11 real',v:real[1],lbl:R0(real[1])},{r:'09/11 prev.',v:PREVISTO[2],cor:'var(--surface-4)',lbl:R0(PREVISTO[2])},{r:'09/11 real',v:real[2],lbl:R0(real[2])}],{aria:'gasto previsto x realizado por dia'})}</div>
+  <div class="duas" style="margin-top:16px">
+   <div class="painel"><h3>Inscritos por dia</h3><p class="leg">Clique no card para hora a hora e comparar métricas.</p>${linhas([{nome:'Inscritos',cor:'var(--s1)',v:S.inscritos.d,f:nf.format}],DIAS)}</div>
+   <div class="painel"><h3>Para onde foi a verba</h3><p class="leg">Gasto até agora contra a verba de cada frente.</p>${barras([{r:'Meta',v:tot('gastoMeta'),ref:VMETA},{r:'Google',v:tot('gastoGoogle'),ref:VGOOGLE},{r:'Disparos',v:0,ref:VDISP}],{f:R0,L:80,aria:'gasto por frente'})}<p class="leg" style="margin:6px 0 0">Disparos: custo aguardando fonte (planilha de mensageria, não está no banco).</p></div>
+  </div>`},
+ trafego:()=>{
+  const ti=tot('impressoes'),tc=tot('cliques'),tg=tot('gastoMeta')+tot('gastoGoogle');
+  return `<div class="cards">
+   ${card('gasto',R0(tg),`de ${R0(VERBA_TRAF)} · Meta ${R0(tot('gastoMeta'))} de ${R0(VMETA)} · Google ${R0(tot('gastoGoogle'))} de ${R0(VGOOGLE)}`)}
+   ${card('impressoes',nf.format(ti))}
+   ${card('alcance',nf.format(94200),'alcance único do período')}
+   ${card('frequencia',D2(ti/94200),'meta 9')}
+   ${card('cpm',R(tg/ti*1000))}
+   ${card('cliques',nf.format(tc))}
+   ${card('ctr',P(tc/ti*100))}
+   ${card('cpc',R(tg/tc))}
+   ${card('views',nf.format(tot('views')),'campanha G1')}
+  </div>
+  <div class="painel"><h3>Gasto por campanha x verba da campanha</h3><p class="leg">Barra cheia: gasto. Fundo: verba. Rótulos das campanhas que ainda não existem são genéricos.</p>${barras(CAMP.map(c=>({r:c.n,v:c.g,ref:c.v})),{f:R0,L:170,aria:'gasto por campanha'})}</div>
+  <div class="tit">Por campanha <small>clique na linha para abrir a campanha</small></div>
+  <div class="tw"><table><thead><tr><th>Campanha</th><th>Plataforma</th><th class="n">Gasto</th><th class="n">Verba</th><th class="n">Impressões</th><th class="n">Alcance</th><th class="n">Frequência</th><th class="n">Cliques</th><th class="n">CTR</th></tr></thead><tbody>
+   ${CAMP.map((c,i)=>`<tr class="cl" tabindex="0" data-camp="${i}"><td>${esc(c.n)}</td><td>${c.p}</td><td class="n tab">${R0(c.g)}</td><td class="n tab">${R0(c.v)}</td><td class="n tab">${c.i?nf.format(c.i):'sem dado'}</td><td class="n tab">${c.a?nf.format(c.a):'sem dado'}</td><td class="n tab">${c.a?D2(c.i/c.a):'sem dado'}</td><td class="n tab">${c.c?nf.format(c.c):'sem dado'}</td><td class="n tab">${c.i?P(c.c/c.i*100):'sem dado'}</td></tr>`).join('')}
+  </tbody></table></div>`},
+ disparos:()=>`<div class="cards">
+   ${card('insDisparo',nf.format(tot('insDisparo')),'inscrições com UTM de disparo (banco)')}
+   ${cardSF('Enviados','planilha de mensageria')}${cardSF('Entregues','planilha de mensageria')}${cardSF('Abertos','planilha de mensageria')}
+   ${cardSF('Cliques','planilha de mensageria')}${cardSF('Falhas','planilha de mensageria')}${cardSF('Custo','de R$ 16.000 · planilha de mensageria')}
+  </div>
+  <div class="duas" style="margin-top:16px">
+   <div class="painel"><h3>Inscrições por peça</h3><p class="leg">Peça = utm_content da inscrição.</p>${barras(PECAS.map(p=>({r:p.p,v:p.n})),{L:120,aria:'inscrições por peça'})}</div>
+   <div class="painel"><h3>Envios por hora</h3><p class="leg">&nbsp;</p><p class="vazio"><span class="af">Aguardando fonte</span><br><br>Envio, entrega e falha estão na planilha de mensageria, que não vai para o banco. Entra quando a planilha for ligada.</p></div>
+  </div>
+  <div class="tit">Por canal e peça</div>
+  <div class="tw"><table><thead><tr><th>Canal</th><th>Peça</th><th class="n">Inscrições</th><th class="n">Enviados</th><th class="n">Entregues</th><th class="n">Custo</th></tr></thead><tbody>
+   ${PECAS.map(p=>`<tr><td>${p.c}</td><td>${esc(p.p)}</td><td class="n tab">${nf.format(p.n)}</td><td class="n"><span class="af">aguardando</span></td><td class="n"><span class="af">aguardando</span></td><td class="n"><span class="af">aguardando</span></td></tr>`).join('')}
+  </tbody></table></div>`,
+ indicacao:()=>{
+  const lista=mostrarTodos?COD:COD.slice(0,20);
+  return `<div class="cards">
+   ${card('participantes',nf.format(PART),'entraram no programa')}
+   ${card('indicacoes',nf.format(IND),'inscritos com ?ref=')}
+   <button class="card" data-m="indicacoes"><span class="cr">Indicações por participante</span><span class="cv tab">${D2(IND/PART)}</span><span class="cx">${COD.length} códigos trouxeram ao menos 1</span></button>
+   ${cardSF('Indicados válidos','Respondi (Júnior)')}${cardSF('Já na base','Respondi (Júnior)')}${cardSF('Autoindicação','Respondi (Júnior)')}
+   ${cardSF('Pontos','pontos por tipo, Respondi (Júnior)')}${cardSF('Matrículas','importação Hotmart, fechamento 10/11')}
+  </div>
+  <div class="duas" style="margin-top:16px">
+   <div class="painel"><h3>Indicações por participante</h3><p class="leg">Quantos participantes trouxeram 0, 1, 2 a 5 e 6 ou mais.</p>${colunas(DIST.map(d=>({r:d.r,v:d.n})),{aria:'distribuição de indicações por participante'})}</div>
+   <div class="painel"><h3>O laço do programa</h3><p class="leg">Do participante ao indicado válido.</p>${barras([{r:'Entrou no programa',v:PART},{r:'Trouxe ao menos 1',v:COD.length},{r:'Trouxe válido',v:0}],{L:140,aria:'laço do programa'})}<p class="leg" style="margin:6px 0 0">"Trouxe válido" aguardando a situação do indicado (Júnior).</p></div>
+  </div>
+  <div class="tit">Ranking por código <small>sem CPF · dono do código aguardando o Júnior · exportação sai sem a Turma Especial</small></div>
+  <div class="tw"><table><thead><tr><th class="n">#</th><th>Código</th><th>Dono</th><th class="n">Indicações</th><th class="n">Pontos</th><th>Última indicação</th></tr></thead><tbody>
+   ${lista.map((c,i)=>`<tr class="cl" tabindex="0" data-cod="${i}"><td class="n tab">${i+1}</td><td class="tab">${c.c}</td><td><span class="af">aguardando</span></td><td class="n tab">${c.q}</td><td class="n"><span class="af">aguardando</span></td><td class="tab">${c.ult}</td></tr>`).join('')}
+  </tbody></table></div>
+  <p style="margin:10px 0 0"><button class="chip" data-todos>${mostrarTodos?'Ver só o Top 20':'Ver lista completa ('+COD.length+')'}</button></p>`}
+};
+
+/* ---------- modais ---------- */
+let ultimoFoco=null;
+function abrirModal(html){ultimoFoco=document.activeElement;
+  const ov=document.createElement('div');ov.className='ov';ov.innerHTML=`<div class="modal" role="dialog" aria-modal="true" aria-labelledby="mt" tabindex="-1">${html}</div>`;
+  document.body.appendChild(ov);document.body.style.overflow='hidden';const m=ov.firstElementChild;m.focus();
+  const fechar=()=>{ov.remove();document.body.style.overflow='';$('#tip').style.display='none';ultimoFoco&&ultimoFoco.focus()};
+  ov.onclick=e=>{if(e.target===ov)fechar()};ov.querySelector('.fechar').onclick=fechar;
+  ov.onkeydown=e=>{if(e.key==='Escape')fechar()};return {ov,m,fechar};
+}
+const MET_ABA={visao:['gasto','inscritos','participantes','indicacoes','cpi'],trafego:['gasto','gastoMeta','gastoGoogle','impressoes','alcance','frequencia','cpm','cliques','ctr','cpc','views'],
+ disparos:['insDisparo','inscritos'],indicacao:['participantes','indicacoes','inscritos']};
+const CORES=['var(--s1)','var(--s2)','var(--s3)','var(--s4)'];
+const RECORTE={
+ trafego:()=>`<div class="tit">Recortes</div><div class="tw"><table><thead><tr><th>Público</th><th class="n">Gasto</th><th class="n">Impressões</th><th class="n">Cliques</th></tr></thead><tbody>
+  <tr><td>Ex-alunos</td><td class="n tab">${R0(3120)}</td><td class="n tab">${nf.format(88200)}</td><td class="n tab">${nf.format(1460)}</td></tr><tr><td>Fluxograma e leads</td><td class="n tab">${R0(2760)}</td><td class="n tab">${nf.format(97500)}</td><td class="n tab">${nf.format(1690)}</td></tr><tr><td>Quente (IG 30D + listas)</td><td class="n tab">${R0(2540)}</td><td class="n tab">${nf.format(101220)}</td><td class="n tab">${nf.format(1080)}</td></tr></tbody></table></div>`,
+ visao:()=>`<div class="tit">Recortes por origem da inscrição</div><div class="tw"><table><thead><tr><th>Origem</th><th class="n">Inscritos</th><th class="n">%</th></tr></thead><tbody>
+  ${[['Tráfego pago',598],['Disparos',519],['Link do programa',IND],['Sem UTM',1284-598-519-IND]].map(r=>`<tr><td>${r[0]}</td><td class="n tab">${nf.format(r[1])}</td><td class="n tab">${P(r[1]/1284*100)}</td></tr>`).join('')}</tbody></table></div>`,
+ disparos:()=>`<div class="tit">Recortes por canal</div><div class="tw"><table><thead><tr><th>Canal</th><th class="n">Inscrições</th></tr></thead><tbody>
+  ${['WhatsApp API','Grupos SendFlow','E-mail'].map(c=>`<tr><td>${c}</td><td class="n tab">${nf.format(PECAS.filter(p=>p.c===c).reduce((a,b)=>a+b.n,0))}</td></tr>`).join('')}</tbody></table></div>`,
+ indicacao:()=>`<div class="tit">Recortes das indicações</div><div class="tw"><table><thead><tr><th>Profissão</th><th class="n">Indicações</th><th>Origem</th><th class="n">Indicações</th></tr></thead><tbody>
+  ${PROF.map((p,i)=>{const n=COD.flatMap(c=>c.ind).filter(x=>x.prof===p).length;const o=ORIG[i];const m=COD.flatMap(c=>c.ind).filter(x=>x.orig===o).length;return `<tr><td>${p}</td><td class="n tab">${n}</td><td>${o}</td><td class="n tab">${m}</td></tr>`}).join('')}
+  <tr><td></td><td></td><td>${ORIG[3]}</td><td class="n tab">${COD.flatMap(c=>c.ind).filter(x=>x.orig===ORIG[3]).length}</td></tr></tbody></table></div><p class="leg" style="font-size:11px;color:var(--fg-3);margin:6px 0 0">Cidade e UF: a captura não pede; só entram se o Respondi tiver.</p>`
+};
+function modalMetrica(k){
+  let sel=[k],modo='dia';
+  const disp=[...new Set([k,...MET_ABA[aba]])];
+  const html=()=>{const rot=modo==='dia'?DIAS:HORAS;
+    const series=sel.map((m,i)=>({nome:S[m].r,cor:CORES[i],v:S[m][modo==='dia'?'d':'h'],f:S[m].f}));
+    const meta=sel.length===1&&k==='frequencia'?9:null;
+    return `<div class="dCab"><div><h2 id="mt">${esc(S[k].r)}</h2><div class="ms">Evolução ${modo==='dia'?'diária (09/11 parcial)':'por hora em 09/11'}${sel.length>1?' · cada linha na própria escala, passe o mouse para ver os valores':''}</div></div><button class="fechar">${ic('x',12)} Fechar</button></div>
+    <div class="mlinha" style="margin-top:12px"><div class="seg" role="group" aria-label="Período"><button data-mo="dia" aria-pressed="${modo==='dia'}">Por dia</button><button data-mo="hora" aria-pressed="${modo==='hora'}">Por hora (09/11)</button></div><span class="sec8">Comparar até 4 métricas</span></div>
+    <div class="chips">${disp.map(m=>{const on=sel.includes(m);const cor=on?CORES[sel.indexOf(m)]:'var(--fg-4)';const off=!on&&sel.length>=4;return `<button class="chip" data-c="${m}" aria-pressed="${on}" ${off?'aria-disabled="true"':''}><i style="background:${cor}"></i>${esc(S[m].r)}</button>`}).join('')}</div>
+    ${linhas(series,rot,{meta})}
+    <div class="lista">${series.map(s=>`<div><span>${esc(s.nome)}</span><b class="tab">${!['cpi','frequencia','cpm','ctr','cpc'].includes(sel[series.indexOf(s)])?s.f(s.v.reduce((a,b)=>a+b,0)):s.f(s.v[s.v.length-1])}</b></div>`).join('')}</div>
+    ${(RECORTE[aba]||(()=>''))()}`};
+  const {m}=abrirModal(html());
+  const re=()=>{const f=document.activeElement&&document.activeElement.dataset;m.innerHTML=html();m.querySelector('.fechar').onclick=()=>m.parentElement.click();ligarM();ligar(m);
+    if(f){const q=f.c?`[data-c="${f.c}"]`:f.mo?`[data-mo="${f.mo}"]`:null;q&&m.querySelector(q)&&m.querySelector(q).focus()}};
+  const ligarM=()=>{m.querySelector('.fechar').onclick=()=>{m.parentElement.dispatchEvent(new MouseEvent('click'))};
+    const ov=m.parentElement;m.querySelector('.fechar').onclick=()=>{ov.remove();document.body.style.overflow='';$('#tip').style.display='none';ultimoFoco&&ultimoFoco.focus()};
+    m.querySelectorAll('[data-mo]').forEach(b=>b.onclick=()=>{modo=b.dataset.mo;re()});
+    m.querySelectorAll('[data-c]').forEach(b=>b.onclick=()=>{const c=b.dataset.c;if(sel.includes(c)){if(sel.length>1)sel=sel.filter(x=>x!==c)}else if(sel.length<4)sel.push(c);re()})};
+  ligarM();ligar(m);
+}
+function modalCampanha(i){const c=CAMP[i];const fr=[.18,.52,.30];
+  const series=[{nome:'Gasto',cor:CORES[0],v:fr.map(f=>Math.round(c.g*f)),f:R0},{nome:'Cliques',cor:CORES[1],v:fr.map(f=>Math.round(c.c*f)),f:nf.format}];
+  const {m}=abrirModal(`<div class="dCab"><div><h2 id="mt">${esc(c.n)}</h2><div class="ms">${c.p} · gasto ${R0(c.g)} de ${R0(c.v)}</div></div><button class="fechar">${ic('x',12)} Fechar</button></div>
+   <div class="lista"><div><span>Impressões</span><b class="tab">${c.i?nf.format(c.i):'sem dado'}</b></div><div><span>Alcance</span><b class="tab">${c.a?nf.format(c.a):'sem dado'}</b></div><div><span>Frequência</span><b class="tab">${c.a?D2(c.i/c.a):'sem dado'}</b></div><div><span>CPC</span><b class="tab">${c.c?R(c.g/c.c):'sem dado'}</b></div></div>
+   <div class="painel"><h3>Gasto e cliques por dia</h3><p class="leg">Cada linha na própria escala.</p>${c.g?linhas(series,DIAS):'<p class="vazio">Campanha ainda sem veiculação.</p>'}</div>
+   <div class="tit">Conjuntos</div><div class="tw"><table><thead><tr><th>Conjunto (público)</th><th class="n">Gasto</th><th class="n">Cliques</th></tr></thead><tbody>
+   <tr><td>Ex-alunos</td><td class="n tab">${R0(c.g*.4)}</td><td class="n tab">${nf.format(Math.round(c.c*.38))}</td></tr><tr><td>Fluxograma e leads</td><td class="n tab">${R0(c.g*.35)}</td><td class="n tab">${nf.format(Math.round(c.c*.4))}</td></tr><tr><td>Quente</td><td class="n tab">${R0(c.g*.25)}</td><td class="n tab">${nf.format(Math.round(c.c*.22))}</td></tr></tbody></table></div>`);ligar(m)}
+function modalCodigo(i){const c=COD[i];
+  const pd=DIAS.map(d=>c.ind.filter(x=>x.d===d).length);
+  const {m}=abrirModal(`<div class="dCab"><div><h2 id="mt">Código ${c.c}</h2><div class="ms">Dono do código: aguardando o Júnior subir quem é · ${c.q} indicações</div></div><button class="fechar">${ic('x',12)} Fechar</button></div>
+   <div class="lista"><div><span>Profissão do dono</span><b><span class="af">aguardando</span></b></div><div><span>Origem do dono</span><b><span class="af">aguardando</span></b></div><div><span>Pontos por tipo</span><b><span class="af">aguardando</span></b></div><div><span>Matrículas</span><b><span class="af">10/11</span></b></div></div>
+   <div class="painel"><h3>Indicações por dia</h3><p class="leg">&nbsp;</p>${linhas([{nome:'Indicações',cor:CORES[0],v:pd,f:nf.format}],DIAS)}</div>
+   <div class="tit">Indicados <small>telefone mascarado · sem CPF</small></div>
+   <div class="tw"><table><thead><tr><th>Nome</th><th>Telefone</th><th>Profissão</th><th>Origem</th><th>Data</th><th>Situação</th><th>Virou indicador</th></tr></thead><tbody>
+   ${c.ind.map(x=>`<tr><td>${esc(x.nm)}</td><td class="tab">${x.tel}</td><td>${x.prof}</td><td>${x.orig}</td><td class="tab">${x.d} ${x.h}</td><td><span class="af">aguardando</span></td><td><span class="af">aguardando</span></td></tr>`).join('')}
+   </tbody></table></div>`);ligar(m)}
+
+/* início */
+const q=new URLSearchParams(location.search);
+if(q.get('bloco'))aberto=q.get('bloco');if(q.get('aba')&&ABAS.some(a=>a[0]===q.get('aba')))aba=q.get('aba');
+if(!aberto)aberto='live-final';
+grade();detalhe(false);
+})();
+</script>
+</body>
+</html>
